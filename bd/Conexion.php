@@ -1,16 +1,24 @@
+
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Conexion
- *
- * @author User
- */
 class Conexion {
-    //put your code here
+    private $dsn = "mysql:host=localhost;dbname=bdtaxiseguro";
+    private $user = "root";
+    private $password = "";
+    private $option = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'");
+    protected $conn = null;
+
+    public function abrirConexion(){
+        try{
+            $this->conn = new PDO($this->dsn, $this->user, $this->password, $this->option);
+            return $this->conn;
+        } catch(PDOException $e) {
+            echo $e->getMessage()+"tu conexion no sirve";
+        }
+    }
+    
+    public function cerrarConexion(){
+        return $this->conn = null;
+    }
+    
 }
