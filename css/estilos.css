@@ -29,7 +29,7 @@ body {
       position: relative;
       margin-bottom: 32px; }
       .contenedor-formulario .formulario .input-group input[type="text"],
-      .contenedor-formulario .formulario .input-group input[type="email"],
+      .contenedor-formulario .formulario .input-group input[type="usuario"],
       .contenedor-formulario .formulario .input-group input[type="password"] {
         font-family: "Roboto";
         font-size: 16px;
@@ -41,18 +41,18 @@ body {
         border: none;
         border-bottom: 2px solid #BBDEFB; }
         .contenedor-formulario .formulario .input-group input[type="text"]:focus, .contenedor-formulario .formulario .input-group input[type="text"]:active,
-        .contenedor-formulario .formulario .input-group input[type="email"]:focus,
-        .contenedor-formulario .formulario .input-group input[type="email"]:active,
+        .contenedor-formulario .formulario .input-group input[type="usuario"]:focus,
+        .contenedor-formulario .formulario .input-group input[type="usuario"]:active,
         .contenedor-formulario .formulario .input-group input[type="password"]:focus,
         .contenedor-formulario .formulario .input-group input[type="password"]:active {
           outline: none;
           border-bottom: 2px solid #303F9F; }
         .contenedor-formulario .formulario .input-group input[type="text"].error,
-        .contenedor-formulario .formulario .input-group input[type="email"].error,
+        .contenedor-formulario .formulario .input-group input[type="usuario"].error,
         .contenedor-formulario .formulario .input-group input[type="password"].error {
           border-bottom: 2px solid #D32F2F; }
           .contenedor-formulario .formulario .input-group input[type="text"].error + label,
-          .contenedor-formulario .formulario .input-group input[type="email"].error + label,
+          .contenedor-formulario .formulario .input-group input[type="usuario"].error + label,
           .contenedor-formulario .formulario .input-group input[type="password"].error + label {
             color: #D32F2F; }
       .contenedor-formulario .formulario .input-group label {
