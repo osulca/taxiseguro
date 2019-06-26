@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-06-2019 a las 16:38:34
+-- Tiempo de generación: 26-06-2019 a las 19:48:31
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.3.0
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `conductor` (
-  `DNI` int(8) NOT NULL,
-  `nombre` varchar(8) COLLATE utf8mb4_spanish_ci NOT NULL,
   `licencia` varchar(9) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `nombre` varchar(8) COLLATE utf8mb4_spanish_ci NOT NULL,
   `sexo` varchar(10) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `fotografia` blob NOT NULL,
   `placa` varchar(7) COLLATE utf8mb4_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -52,8 +52,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`Codigo`, `Contraseña`) VALUES
-(1234567890, 12345678),
-(2121212121, 23456789);
+(2016100342, 72890691),
+(2016200342, 72890692);
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,7 @@ CREATE TABLE `viaje` (
 -- Indices de la tabla `conductor`
 --
 ALTER TABLE `conductor`
-  ADD PRIMARY KEY (`DNI`),
+  ADD PRIMARY KEY (`licencia`),
   ADD KEY `placa` (`placa`);
 
 --
