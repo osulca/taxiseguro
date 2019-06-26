@@ -81,7 +81,7 @@ if($request=="POST"){
          echo json_encode(["respuesta"=>$response]);
 }
 //pendiente hacer la conexion a la bs y validar campos
-        
+        //aa        
         }
         ?>
     </body>
