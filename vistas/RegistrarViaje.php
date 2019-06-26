@@ -10,11 +10,13 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
         <title>Consultar vehículo</title>
-        <link rel="stylesheet" href="../css/estilos.css">
+        <link rel="stylesheet" href="css/estilos.css">
     </head>
     <body>
 
-        <div class="centrar">
+        <div class="" id="formulario">
+            
+
                 <form action="" class="" name="" method="get">
                     <table border="0">
                         <tr>
@@ -123,7 +125,9 @@ and open the template in the editor.
                              			
                         </div>
 
-                         
+                        <input type="submit" id="" name="submit" value="Tomar colectivo"> <input type="button" id="" value="Salir">
+                    </div>
+
                 </form>
         </div>
 
