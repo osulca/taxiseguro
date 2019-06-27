@@ -29,7 +29,7 @@ var blurInput = function(){
 formulario.addEventListener("submit", enviar);
 
 for (var i = 0; i < elementos.length; i++) {
-	if (elementos[i].type == "text" || elementos[i].type == "email" || elementos[i].type == "password") {
+	if (elementos[i].type == "text" || elementos[i].type == "usuario" || elementos[i].type == "password") {
 		elementos[i].addEventListener("focus", focusInput);
 		elementos[i].addEventListener("blur", blurInput);
 	}
