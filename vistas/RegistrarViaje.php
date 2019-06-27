@@ -1,138 +1,48 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
         <title>Consultar vehículo</title>
-        <link rel="stylesheet" href="css/estilos.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     </head>
-    <body>
-
-        <div class="" id="formulario">
-            
-
-                <form action="" class="" name="" method="get">
-                    <table border="0">
-                        <tr>
-                            <td>fecha y hora:</td>
-                            <td><input type="text" id="fecha-hora" name="fecha-hora"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>CONSULTAR</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Placa:</td>
-                            <td><input type="text" id="placa" name="placa"> </td>
-                            <td><input type="button" value="Buscar" /></td>
-                        </tr>
-                        <tr>
-                            <td>DATOS CHOFER</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Nombre:</td>
-                            <td><input type="text" id="nombre" name="nombre" readonly="readonly"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>DNI:/td>
-                            <td><input type="text" id="dni" name="dni" readonly="readonly"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Licencia:</td>
-                            <td><input type="text" id="licencia" name="licencia" readonly="readonly"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Sexo:</td>
-                            <td><input type="text" id="sexo" name="sexo" readonly="readonly"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>DATOS DEL VEHÍCULO</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Placa:</td>
-                            <td><input type="text" id="placa" name="placa" readonly="readonly"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Modelo:</td>
-                            <td><input type="text" id="modelo" name="modelo" readonly="readonly"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Color:</td>
-                            <td><input type="color" id="color" name="color" readonly="readonly"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>SOAT:</td>
-                            <td><input type="text" id="soat" name="soat" readonly="readonly"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><input type="button" id="" value="Tomar colectivo"></td>
-                            <td><input type="button" id="" value="Salir"></td>
-                            <td></td>
-                        </tr>
-                        
-                    </table>
-                        <p></p>
-                        <p></p>
-                        <div class="">
-                             			
-                        </div>
-
-                        <p></p>
-                        <div class="">
-                             			
-                        </div>
-                        <div class="">
-                             			
-                        </div>
-                        <div class="">
-                             		
-                        </div>
-                        <div class="">
-                             			
-                        </div>
-
-                        <p></p>
-                        <div class="">
-                             			
-                        </div>
-                        <div class="">
-                             			
-                        </div>
-                        <div class="">
-                             		
-                        </div>
-                        <div class="">
-                             			
-                        </div>
-
-                        <input type="submit" id="" name="submit" value="Tomar colectivo"> <input type="button" id="" value="Salir">
+    <body class="bg-light">
+        <div class="card mx-auto mt-5" style="width: 25rem;">
+            <div class="card-body container">
+                <form action="#" name="formulario_registro" method="post">
+                    <div class="form-group">
+                        <label class="label" for="fecha-hora">Fecha y Hora:</label>
+                        <input type="text" class="form-control" id="fecha-hora" name="fecha-hora"> 
                     </div>
-
+                    <div class="form-group" style="text-align: center;">
+                        <label class="label" for="consultar-placa">CONSULTAR PLACA</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="num-placa">N° de Placa:</label>
+                        <input type="text" class="form-control" id="num-placa" name="num-placa">
+                        <input type="button" class="btn btn-danger btn-block" name="buscar" value="Buscar Placa" />
+                    </div>
+                    <div class="form-group" style="text-align: center;">
+                        <label class="label" for="datos-vehiculo">DATOS DEL VEHÍCULO</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="placa">Placa:</label>
+                        <input type="text" class="form-control" id="placa" name="placa"> 
+                    </div>      
+                    
+                    <input type="submit" class="btn btn-dark btn-block" name="submit" value="Registrar Viaje">
                 </form>
+            </div>
         </div>
-
-        <?php
+                    
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <?php
         // put your code here
-        ?>
+    ?>
+
     </body>
 </html>
