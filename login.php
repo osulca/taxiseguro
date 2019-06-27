@@ -44,7 +44,46 @@
     } else {
       $message = 'Sus credenciales no coinciden';
     }
-  }
+
+    
+    $lenusuario = strlen($usuario);
+    $lenpassword = strlen($password);
+    $pattern = '`[0-8]`';  
+        
+    if(!preg_match($pattern, $usuario)){
+        echo "<li> no son numeros </li>";
+        }   
+        elseif ($lenusuario != 10) {
+            echo '<li> usuario debe tener 10 caracteres </li>';       
+        }
+    
+    if(!preg_match($pattern, $password)){
+        echo "<li> password solo numeros </li>";
+        }   
+        elseif ($lenpassword < 8 || $lenpassword > 8) {
+            echo '<li> password debe tener 8 caracteres</li>';       
+        }
+       $request = $_SERVER['REQUEST_METHOD'];
+if($request=="POST"){
+    
+    $usuario = trim($_POST["usuario"]);
+    $password = trim($_POST["password"]);
+    $response = "ok";
+     $usuariodb = "2016210169";
+         $passworddb = password_hash("73769973", PASSWORD_DEFAULT);
+         
+         
+         if($usuario==$usuariodb){
+             $response = "usuario no encontrado";
+         }elseif(password_verify($password, $passworddb)){
+             $response= "la contraseña no coincide";
+         }
+         echo json_encode(["respuesta"=>$response]);
+}
+//pendiente hacer la conexion a la bs y validar campos
+        //aa        
+        }
+
         ?>
         <script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
