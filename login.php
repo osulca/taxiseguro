@@ -69,6 +69,7 @@ if($request=="POST"){
     $response = "ok";
      $usuariodb = "2016100342";
          $passworddb = password_hash("72890691", PASSWORD_DEFAULT);
+
          
          
          if($usuario==$usuariodb){
@@ -81,6 +82,7 @@ if($request=="POST"){
 //pendiente hacer la conexion a la bs y validar campos
         
         }
+
         ?>
     </body>
 </html>

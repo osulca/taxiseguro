@@ -14,7 +14,6 @@
             <center>
                 
                 <h1>Registrar Chofer y Vehiculo</h1>
-            
                 <form action="" class="" name="" method="get">
                     <table border="0">
                         <tr>
@@ -57,11 +56,13 @@
                             <td>Modelo:</td>
                             <td><input type="text" id="modelo" name="modelo"></td>
                             <td></td>
+
                         </tr>
                         <tr>
                             <td>Color:</td>
                             <td><input type="text" id="color" name="color"></td>
                             <td></td>
+
                         </tr>
                         <tr>
                             <td>SOAT:</td>
@@ -78,6 +79,7 @@
         </div>
 
         <?php
+
       include './bd/Conexion.php';
         if(isset($_POST["submit"])){
            $licencia= trim($_POST["licencia"]);

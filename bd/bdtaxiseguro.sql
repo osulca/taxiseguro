@@ -36,6 +36,7 @@ CREATE TABLE `conductor` (
   `placa` varchar(7) COLLATE utf8mb4_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+
 -- --------------------------------------------------------
 
 --
@@ -124,6 +125,7 @@ ALTER TABLE `conductor`
   ADD CONSTRAINT `conductor_ibfk_1` FOREIGN KEY (`placa`) REFERENCES `vehiculo` (`placa`);
 
 --
+
 -- Filtros para la tabla `viaje`
 --
 ALTER TABLE `viaje`
