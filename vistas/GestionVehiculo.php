@@ -14,123 +14,136 @@
             <center>
                 
                 <h1>Registrar Chofer y Vehiculo</h1>
-                <form action="" class="" name="" method="get">
-                    <table border="0">
+                
+                
+                <b>Chofer:</b>
+                <form action="#" method="POST" style="width: 500px" enctype="multipart/form-data">
+                    <table border="0" style="width: 500px">
                         <tr>
                             <td>Licencia:</td>
                             <td><input type="text" id="licencia" name="licencia"></td>
-                            <td></td>
                         </tr>
                         <tr>
                             <td>Nombre:</td>
                             <td><input type="text" id="nombre" name="nombre"></td>
-                            <td></td>
                         </tr>
                         <tr>
                             <td>Sexo:</td>
-                            <td><input type="text" id="sexo" name="sexo"></td>
-                            <td></td>
+                            <td>
+                                <select id="sexo" name="sexo">
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>Fotografia:</td>
-                            <td><input type="image" id="foto" name="foto"></td>
-                            <td></td>
-                        </tr>
-                        
+                            <td><input type="file" id="fotografia" name="fotografia"></td>
+                        </tr> 
                     </table>
-                </form>
                 
-                <p>
-                <input type="button" id="" value="Registrar Chofer">
-                </p>
-                
-            
-                <form action="" class="" name="" method="get">
-                    <table border="0">
+                <br>
+                <b>Vehiculo:</b>
+                <table border="0" style="width: 500px">
                         <tr>
                             <td>Placa:</td>
                             <td><input type="text" id="placa" name="placa"></td>
-                            <td></td>
                         </tr>
                         <tr>
                             <td>Modelo:</td>
                             <td><input type="text" id="modelo" name="modelo"></td>
-                            <td></td>
-
                         </tr>
                         <tr>
                             <td>Color:</td>
                             <td><input type="text" id="color" name="color"></td>
-                            <td></td>
-
                         </tr>
                         <tr>
                             <td>SOAT:</td>
                             <td><input type="text" id="soat" name="soat"></td>
-                            <td></td>
                         </tr>
                     </table>
-                </form>
-                
                 <p>
-                <input type="button" id="" value="Registrar Vehiculo">
-                
+                    <input type="submit" name="submit" id="RegistroTotal" value="Registrar Chofer y Vehiculo">
+                    
+                </form>
             </center>
         </div>
 
         <?php
-
-      include './bd/Conexion.php';
+        
+        $ruta = $_SERVER['DOCUMENT_ROOT'].'/taxiseguro/';
+        
+        include $ruta.'bd/Conexion.php';
+        
+        $conexionDB = new Conexion();
+        $conn = $conexionDB->abrirConexion();
+        
         if(isset($_POST["submit"])){
            $licencia= trim($_POST["licencia"]);
            $nombre = trim($_POST["nombre"]);
            $sexo = trim($_POST["sexo"]);
-           $foto = trim($_POST["foto"]);
+           
+           $foto = $_FILES["fotografia"]["tmp_name"];
+           
            $placa = trim($_POST["placa"]);
            $modelo = trim($_POST["modelo"]);
            $color = trim($_POST["color"]);
            $soat = trim($_POST["soat"]);
+           
+           
+           if($licencia==""){
+                echo "<li> campo licencia vacio </li>" ;
+            }
     
-    if($licencia==""){
-        echo "<li> campo licencia vacio </li>" ;
-    }
-    
-    else if($nombre==""){
-        echo "<li> campo nombre vacio </li>";
-    }
-    
-    else if($sexo==""){
-        echo "<li> campo nombre vacio </li>";
-    }
-    
-        else if($placa==""){
-        echo "<li> campo nombre vacio </li>";
-    }
-    
-    else if($modelo==""){
-        echo "<li> campo nombre vacio </li>";
-    }
-    
-    else if($nombre==""){
-        echo "<li> campo nombre vacio </li>";
-    }
-    
-    else if($color==""){
-        echo "<li> campo nombre vacio </li>";
-    }
-    
-    else if($soat==""){
-        echo "<li> campo nombre vacio </li>";
-    }
-    
-    /*
-    $lenusuario = strlen($usuario);
-    $lenpassword = strlen($password);
-    $pattern = '`[0-8]`';  
-    */
+            else if($nombre==""){
+                echo "<li> campo nombre vacio </li>";
+            }
+
+            else if($placa==""){
+                echo "<li> campo placa vacio </li>";
+            }
+            
+            else if(empty ($foto)){
+                echo "<li> campo foto vacio </li>";
+            }
+
+            else if($modelo==""){
+                echo "<li> campo modelo vacio </li>";
+            }
+
+            else if($color==""){
+                echo "<li> campo color vacio </li>";
+            }
+
+            else if($soat==""){
+                echo "<li> campo soat vacio </li>";
+            }
+            
+            else {
+
+            try{
+                 $sql1="INSERT INTO vehiculo(placa, modelo, color, soat) VALUES('$placa', '$modelo','$color','$soat') ";
+                 $rows1 = $conn->exec($sql1);
+                 $conexionDB->cerrarConexion();
+                 echo "Entramos vehi"."<br>";
+
+             }catch (Exception $e){
+                 echo $e->getMessage();
+             }
+
+             try{
+                 $sql2="INSERT INTO conductor(licencia,nombre,sexo,fotografia,fk_placa_vehiculo) VALUES('$licencia','$nombre','$sexo','$foto','$placa')";
+                 $rows2 = $conn->exec($sql2);
+                 $conexionDB->cerrarConexion();
+                 echo "Entramos conductor";
+
+             }catch (Exception $e){
+                 echo $e->getMessage();
+             }
         
-        }
-        ?>
+            }
+}
+?>
     </body>
 </html>
 
