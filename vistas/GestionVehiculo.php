@@ -8,7 +8,17 @@
         <link rel="stylesheet" href="css/estilos.css">
     </head>
     <body>
-
+        <div id="menu">
+            <ul>
+                <li>Inicio</li>
+                <li class="cerrar sesion">
+                    <a href="includes/logout.php">Cerrar Sesion</a>
+                </li>
+            </ul>
+        </div>
+        <section>
+        <h1>Bienvenido <?php echo $user->getNombre(); ?></h1>
+    </section> 
         <div class="" id="formulario">
             
             <center>
@@ -70,79 +80,7 @@
         </div>
 
         <?php
-        
-        $ruta = $_SERVER['DOCUMENT_ROOT'].'/taxiseguro/';
-        
-        include $ruta.'bd/Conexion.php';
-        
-        $conexionDB = new Conexion();
-        $conn = $conexionDB->abrirConexion();
-        
-        if(isset($_POST["submit"])){
-           $licencia= trim($_POST["licencia"]);
-           $nombre = trim($_POST["nombre"]);
-           $sexo = trim($_POST["sexo"]);
-           
-           $foto = $_FILES["fotografia"]["tmp_name"];
-           
-           $placa = trim($_POST["placa"]);
-           $modelo = trim($_POST["modelo"]);
-           $color = trim($_POST["color"]);
-           $soat = trim($_POST["soat"]);
-           
-           
-           if($licencia==""){
-                echo "<li> campo licencia vacio </li>" ;
-            }
-    
-            else if($nombre==""){
-                echo "<li> campo nombre vacio </li>";
-            }
 
-            else if($placa==""){
-                echo "<li> campo placa vacio </li>";
-            }
-            
-            else if(empty ($foto)){
-                echo "<li> campo foto vacio </li>";
-            }
-
-            else if($modelo==""){
-                echo "<li> campo modelo vacio </li>";
-            }
-
-            else if($color==""){
-                echo "<li> campo color vacio </li>";
-            }
-
-            else if($soat==""){
-                echo "<li> campo soat vacio </li>";
-            }
-            
-            else {
-
-            try{
-                 $sql1="INSERT INTO vehiculo(placa, modelo, color, soat) VALUES('$placa', '$modelo','$color','$soat') ";
-                 $rows1 = $conn->exec($sql1);
-                 $conexionDB->cerrarConexion();
-                 echo "Entramos vehi"."<br>";
-
-             }catch (Exception $e){
-                 echo $e->getMessage();
-             }
-
-             try{
-                 $sql2="INSERT INTO conductor(licencia,nombre,sexo,fotografia,fk_placa_vehiculo) VALUES('$licencia','$nombre','$sexo','$foto','$placa')";
-                 $rows2 = $conn->exec($sql2);
-                 $conexionDB->cerrarConexion();
-                 echo "Entramos conductor";
-
-             }catch (Exception $e){
-                 echo $e->getMessage();
-             }
-        
-            }
-}
 ?>
     </body>
 </html>

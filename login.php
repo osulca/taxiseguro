@@ -1,59 +1,62 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <link rel="stylesheet" href="css/estilos.css">
-        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-        <title>Login</title>
-    </head>
-    <body>
-        <div class="contenedor-formulario">
-            <div class="wrap">
-                <form action="#" class="formulario" name="formulario_registro" method="post">
-                    <div>
-                        <div class="input-group">
-                            <input type="text" id="usuario" name="usuario">
-                            <label class="label" for="usuario">Código:</label>
-                        </div>
 
-                        <div class="input-group">
-                            <input type="password" id="pass" name="password">
-                            <label class="label" for="password">Contraseña:</label>
-                        </div>
-                        <input type="submit" name="submit" id="btn-submit" value="Ingresar">
-                    </div>
-                </form>
-            </div>
-        </div>
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+</head>
+<body>
+    <form action="#" method="POST">
+        <br/><input type="text" name="codigo" placeholder="Ingrese su codigo"><br/>
+       <br/><input type="password" name="password" placeholder="Ingrese su contraseña"><br/>
+        <input type="submit" name="submit" value="Iniciar sesión">
+    </form>
+    <?php
+            include_once './bd/Conexion.php';
+           
+    session_start();
+   
+    
+    if(isset($_SESSION['rol'])){
+        switch($_SESSION['rol']){
+            case 1:
+                header('location: administrador.php');
+            break;
+            case 2:
+            header('location: alumno.php');
+            break;
+            default:
+        }
+    }
+    if(isset($_POST['submit'])){
+        $codigo = trim($_POST['codigo']);
+        $password = trim($_POST['password']);
         
-        <script src="js/Login.js"></script>
-
-
-        <?php
-      include './bd/Conexion.php';
-        if(isset($_POST["submit"])){
-           $usuario= trim($_POST["usuario"]);
-            $password = trim($_POST["password"]);
-    
-    if($usuario==""){
+    if($codigo==""){
         echo "<li> campo usuario vacio </li>" ;
+        
     }
     
-    else if($password==""){
+    elseif($password==""){
         echo "<li> campo password vacio </li>";
+    }else{
+        include_once './includes/validacion.php';
     }
     
-    $lenusuario = strlen($usuario);
+    $lencodigo = strlen($codigo);
     $lenpassword = strlen($password);
     $pattern = '`[0-8]`';  
         
-    if(!preg_match($pattern, $usuario)){
+    if(!preg_match($pattern, $codigo)){
         echo "<li> no son numeros </li>";
         }   
-        elseif ($lenusuario != 10) {
-            echo '<li> usuario debe tener 10 caracteres </li>';       
-        }
+        elseif ($lencodigo != 10 || $lencodigo != 8) {
+            echo '<li> usuario debe tener 10 caracteres(alumnos) o 8 caracteres(Administradores) </li>';       
+        }else{
+        include_once './includes/validacion.php';
+    }
     
     if(!preg_match($pattern, $password)){
         echo "<li> password solo numeros </li>";
@@ -61,28 +64,15 @@
         elseif ($lenpassword < 8 || $lenpassword > 8) {
             echo '<li> password debe tener 8 caracteres</li>';       
         }
-       $request = $_SERVER['REQUEST_METHOD'];
-if($request=="POST"){
-    
-    $usuario = trim($_POST["usuario"]);
-    $password = trim($_POST["password"]);
-    $response = "ok";
-     $usuariodb = "2016100342";
-         $passworddb = password_hash("72890691", PASSWORD_DEFAULT);
-
-         
-         
-         if($usuario==$usuariodb){
-             $response = "usuario no encontrado";
-         }elseif(password_verify($password, $passworddb)){
-             $response= "la contraseña no coincide";
-         }
-         echo json_encode(["respuesta"=>$response]);
-}
-//pendiente hacer la conexion a la bs y validar campos
+      else{
+        include_once './includes/validacion.php';
+    }      
         
-        }
+    }
 
+    
+        
         ?>
-    </body>
+       
+</body>
 </html>
